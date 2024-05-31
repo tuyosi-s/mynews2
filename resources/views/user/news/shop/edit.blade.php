@@ -59,10 +59,4 @@
             </div>
         </div>
     </div>
-              
-              
-          <div>
-                <a href="{{route('main')}}" class="btn btn-primary">メインページへ戻る</a>
-                <a href="{{route('user.news.item.create', ['id' => $profile->id])}}" class="btn btn-primary">マイページへ戻る</a>
-          </div>
 @endsection

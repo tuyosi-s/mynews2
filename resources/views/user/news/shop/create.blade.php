@@ -58,10 +58,4 @@
             </div>          
         <div>
     <div>                
-              
-          <div>
-                <a href="{{route('main')}}" class="btn btn-primary">メインページへ戻る</a>
-                <a href="{{route('user.news.item.add', ['profile' => $profile])}}" class="btn btn-primary">品物の投稿をする</a>
-          </div>
-       
 @endsection

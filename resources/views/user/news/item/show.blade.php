@@ -33,12 +33,4 @@
             </div>
         </div>
     </div>
-          
-    <div class ="container">
-        <div class="row">
-            <div class ="col">
-                <a href="{{route('main')}}" class="btn btn-primary">メインページへ戻る</a>
-            </div>
-        </div>
-    </div>
 @endsection

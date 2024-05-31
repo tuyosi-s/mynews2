@@ -35,5 +35,13 @@
                 </div>
             </div>
         </div>
-    </div>      
+    </div>
+    
+    <div class ="container">
+        <div class="row">
+            <div class ="col">
+                <a href="{{route('user.news.mypage.shopindex')}}" class="btn btn-primary">あなたのページ１へ戻る</a>
+            </div>
+        </div>
+    </div>
 @endsection

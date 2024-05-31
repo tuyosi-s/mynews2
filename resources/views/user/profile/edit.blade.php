@@ -92,9 +92,4 @@
                 </div>    
         </div>  
     </div>
-          
-    <div>
-                <a href="{{route('main')}}" class="btn btn-primary">メインページへ戻る</a>
-                <a href="">ページ紹介へ移動する</a>
-    </div>
 @endsection

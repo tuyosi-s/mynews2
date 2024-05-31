@@ -81,8 +81,4 @@
                 </div>
             </div>
     </div>
-          
-          <div>
-                <a href="{{route('main')}}" class="btn btn-primary">メインページへ戻る</a>>
-          </div>
 @endsection

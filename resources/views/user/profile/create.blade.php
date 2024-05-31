@@ -82,9 +82,4 @@
         </div>  
     </div>
           
-          <div>
-                <a href="{{route('main')}}" class="btn btn-primary">メインページへ戻る</a>
-                <a href="{{route('user.news.shop.create')}}" class="btn btn-primary">お店の投稿をする</a>
-         </div>
-          
 @endsection

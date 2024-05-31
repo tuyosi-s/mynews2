@@ -56,13 +56,4 @@
             </div>
         </div>    
     </div>
-    
-    
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4"> 
-                <!--<a href="{route'user.profile.edit')}}" class="btn btn-primary">プロフィールを変更する</a>-->
-            </div>
-        </div>
-    </div>
  @endsection
