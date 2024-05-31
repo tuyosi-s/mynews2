@@ -19,6 +19,7 @@ class ProfileController extends Controller
     public function create(Request $request)
     {
        //Validationを行う
+       //dd($request);
         $this->Validate($request,Profile::$rules);
 
 
@@ -46,7 +47,6 @@ class ProfileController extends Controller
 
         // データベースに保存する
         // dd($profile, $form,$request);
-
         $profile->save();
         return redirect('user/profile/create');//->with('message', 'プロフィールを新規作成しました');
     }  
@@ -56,28 +56,18 @@ class ProfileController extends Controller
     public function index(Request $request){
         $page_keyword = $request->page_keyword;
         if ($page_keyword != '') {
-            $profiles = Profile::where('name','LIKE', "%{$page_keyword}%" )->get();
+            //検索した$page_keywordと$profile->pageカラムが部分的に一致するprofilesテーブルのレコードを取得
+            $profiles = Profile::where('page','LIKE', "%{$page_keyword}%" )->get();
         }else{
             $profiles = Profile::all();
         }
 
         $profile = Profile::find(Auth::id());
 
-        //return view('main',compact('profiles'));
+        //検索フォームに入力されたワード$page_keywordをreturn viewする
         return view('main',['profiles'=>$profiles,'page_keyword'=>$page_keyword, 'has_profile'=>isset($profile)]);
     }
     
-    
-    
-    //public function edit(Request $request)
-    //{
-        // profile Modelからデータを取得する
-    //    $profile = Profile::find($request->id);
-    //    if (empty($news)) {
-    //        abort(404);
-    //    }
-    //    return view('user.profile.edit', ['profile_form' => $profile]);
-    //}
     
     public function edit()
     {
@@ -94,11 +84,10 @@ class ProfileController extends Controller
         $this->validate($request, Profile::$rules);
         // Profile Modelからデータを取得する
         $profile = Profile::find($request->id);
-        // 送信されてきたフォームデータを格納する
-        
           //dd($profile);
           //dd($request->id);
         
+         // 送信されてきたフォームデータを格納する
         $profile_form = $request->all();
         
         if ($request->remove == 'true') {
@@ -118,13 +107,12 @@ class ProfileController extends Controller
         $profile->fill($profile_form)->save();
 
         return redirect('user/news/mypage/shopindex');//
-    //return back();//->with('message', '投稿を更新しました');
 
     }
     
     public function delete(Request $request)
     {
-        // 該当するNews Modelを取得
+        // 該当するprofile Modelを取得
         $profile = profile::find($request->id);
 
         // 削除する
