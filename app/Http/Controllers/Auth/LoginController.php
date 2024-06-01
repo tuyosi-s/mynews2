@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
+//logoutメソッドで扱うRequestを明示する
+use Illuminate\Http\Request;
+
 class LoginController extends Controller
 {
     /*
@@ -18,14 +21,26 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
-
+    //use AuthenticatesUsers;
+    
+    use AuthenticatesUsers {
+    logout as performLogout;
+}
+    //logoutメソッド　logout時にmainへredirectする
+    public function logout(Request $request)
+    {
+        $this->performLogout($request);
+        return redirect()->route('main'); 
+    }
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+     
+    //login時もmain画面へ移動する 
+    protected $redirectTo = '/';
+    //protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
