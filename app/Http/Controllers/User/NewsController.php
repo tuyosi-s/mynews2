@@ -29,6 +29,7 @@ class NewsController extends Controller
         $shop->shop_name = $request->shop_name;
         $shop->tel = $request->tel;
         $shop->address = $request->address;
+        $shop->url = $request->url;
   
         //$shop->fill($request->all())->save();
         //保存する
@@ -38,6 +39,7 @@ class NewsController extends Controller
     
     public function shopindex($id){
         $profile = Profile::find($id);
+        //ShopModelのprofile_idが$profile->idと一致するShopModelのみ取得
         $shops = Shop::where('profile_id',$profile->id)->get();
         return view('user.news.shop.index',['profile' =>$profile,'shops'=>$shops]);
     }     

@@ -33,9 +33,9 @@
                         <div class="col-10">
                             <select name="gender">
                                 <option value="">-</option>
-                                <option value="男性">男性</option>
-                                <option Vatue="女性">女性</option>
-                                <option Vatue="どちらも選ばない">どちらも選ばない</option>
+                                <option value="男性" @if($profile->gender=="男性") selected @endif>男性</option>
+                                <option Value="女性"  @if($profile->gender=="女性") selected @endif>女性</option>
+                                <option Value="どちらも選ばない"  @if($profile->gender=="どちらも選ばない") selected @endif>どちらも選ばない</option>
                             </select>
                         </div>
                     </div>

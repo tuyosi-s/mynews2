@@ -55,7 +55,7 @@
                                 <option value="">-</option>
                                 {{--selectboxに$1から$10までを格納する--}}
                                 @for ($i = 1; $i <= 10; $i++)
-                                    <option ="{{$i}}"> {{ $i }} </option>
+                                    <option ="{{$i}}"  @if($item->score==$i) selected @endif> {{ $i }} </option>
                                 @endfor
                             </select> 
                         </div>
