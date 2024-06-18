@@ -21,45 +21,56 @@
             
                 <!--2カラムで表示　左が品物情報　右が店情報（店情報はセレクトボックスで選択）-->
                 <div class="row">
-                <div class ="col-6">    
-                    <h3>品物情報</h3>
+                    <div class ="col-6">    
+
                     
-                    <div class="form-group row mb-5">
-                        <label classs="col-2">品名</label>
-                        <div class="col-10">
-                            <input type="text" class="form-control" name="item_name" value="{{ old('item_name')}}">
+                        <div class="form-group row mb-5">
+                            <label classs="col-2">品名</label>
+                            <div class="col-10">
+                                <input type="text" class="form-control" name="item_name" value="{{ old('item_name')}}">
+                            </div>
                         </div>
-                    </div>
                         
-                    <div class="form-group row mb-5">
-                        <label class="col-2">画像</label>
-                        <div class="col-10">
-                            <input type="file" class="form-control-file" name="item_image">
+                        <div class="form-group row mb-5">
+                            <label class="col-2">画像</label>
+                            <div class="col-10">
+                                <input type="file" class="form-control-file" name="item_image">
+                            </div>
+                        </div>
+                         
+                        <div class="form-group row mb-5">
+                            <label class="col-2">コメント</label>
+                            <div class="col-10">
+                                <textarea class="form-control" name="comment" rows="20" cols="20">{{ old('comment') }}</textarea>
+                            </div>
+                        </div> 
+                         
+                        <div class="form-group row mb-5">
+                            <label classs="col-2"> 点数(10点満点/星の数で記載) </label>
+                            <select name="score">
+                                <option value="">-</option>
+                                {{--selectboxに数字１～10までを$1から$10で格納・表示する--}}
+                                @for ($i = 1; $i <= 10; $i++)
+                                    <option ="{{$i}}"> {{ $i }} </option>
+                                @endfor
+                            </select> 
                         </div>
                     </div>
-                         
-                    <div class="form-group row mb-5">
-                        <label class="col-2">コメント</label>
-                        <div class="col-10">
-                            <textarea class="form-control" name="comment" rows="20" cols="20">{{ old('comment') }}</textarea>
+                      
+                    <div class ="col-6">
+                        <div class="form-group row mb-5">
+                            <label>お店の情報</label>
+                            <table class="table table-dark">
+                               <tr> <th>店名</th> <td>{{ $shop->shop_name }}</td> </tr>
+                               <tr> <th>TEL</th> <td>{{ $shop->tel }}</td> </tr>
+                               <tr> <th>住所</th> <td>{{ $shop->address }}</td> </tr>
+                               <tr> <th>URL</th> <td>{{ $shop->url }}</td> </tr>
+                            </table>
                         </div>
                     </div> 
-                         
-                    <div class="form-group row mb-5">
-                        <label classs="col-2"> 点数(10点満点/星の数で記載) </label>
-                        <select name="score">
-                            <option value="">-</option>
-                            {{--selectboxに数字１～10までを$1から$10で格納・表示する--}}
-                            @for ($i = 1; $i <= 10; $i++)
-                                <option ="{{$i}}"> {{ $i }} </option>
-                            @endfor
-                        </select> 
-                    </div>
-                </div>
-                      
-                <div class ="col-6">
-                    <div class="form-group row mb-5">
-                        <label class="col-2">お店の選択</label>
+                        
+                        
+{{--                    <label class="col-2">お店の情報</label>
                         <div class="col-10">
                             <table border='2'>
                                 <tr>
@@ -71,7 +82,7 @@
                                 </tr>
                             </table>
                             {{--お店はprofile_idでリレーションされているShopmodelを$shopに格納してselectboxで選択する--}}        
-                            <select name="shop_id">
+{{--                             <select name="shop_id">
                                 <table border='2'>
                                     <option value="">-</option>
                                     @foreach($shops as $shop)
@@ -87,12 +98,12 @@
                                     @endforeach
                                 </table>
                             </select>
-                        </div>
-                    </div>
+--}}                            
                 </div>
-                    
-                @csrf
+                
                 <div class="form-group row mb-5">
+                　　<input type="hidden" name="shop_id" value="{{ $shop->id }}">
+                　　@csrf
                     <input type="submit" class="btn btn-primary" value="投稿する">
                 </div>
             </form>

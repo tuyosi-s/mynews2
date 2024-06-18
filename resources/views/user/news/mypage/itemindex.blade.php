@@ -30,7 +30,7 @@
             
             
                   <div>
-                      <a href="{{ route('user.news.item.add',$shop->id) }}" >『{{ $shop->shop_name }}』　について品物のニュースを新たに書く</a>
+                      <a href="{{ route('user.news.item.add',['shop_id' => $shop->id] ) }}" >『{{ $shop->shop_name }}』　について品物のニュースを新たに書く</a>
                   </div>
             
                   <label>『{{ $shop->shop_name }}』　について、あなたの品物ニュースの一覧</label>            

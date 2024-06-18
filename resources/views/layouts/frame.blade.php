@@ -49,9 +49,24 @@
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav">
                         @guest
-                            <li><a class="nav-link" href="{{ route('login') }}">{{ __('messages.login') }}</a></li>
+                        {{--<li><a class="nav-link" href="{{ route('login') }}">{{ __('messages.login') }}</a></li> --}}
                         {{-- ログインしていたらユーザー名とログアウトボタンを表示 --}}
+                        
+                            @if (Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                            @endif
+
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        
+                        
                         @else
+                        
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>

@@ -14,7 +14,8 @@ class Shop extends Model
     public static $rules = array(
         //'profile_id' => 'required',
         'shop_name' => 'required',
-        'tel' => 'integer',
+        //'tel' => 'integer',
+        'tel' => 'numeric|digits_between:10,11',
         'address'=> 'required',
         'url'=>'required',
               

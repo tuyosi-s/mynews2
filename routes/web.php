@@ -26,7 +26,7 @@ use App\Http\Controllers\User\NewsController;
 //下記はlogin前でも表示されるメインページへのroute
 Route::get('/',[ProfileController::class,'index'])->name('main');
 
-//下記までlogin前でも表示される閲覧の為の、それぞれshop.indexページ、item.indexページ、item.showページへのroute
+//下記までlogin前でも表示できる閲覧の為のページ（それぞれshop.indexページ、item.indexページ、item.showページ）
 Route::controller(NewsController::class)->prefix('user')->name('user.')->group(function(){
     Route::get('news/shop/index/{id}','shopindex')->name('news.shop.index');
     Route::get('news/item/index/{id}','itemindex')->name('news.item.index');

@@ -18,7 +18,8 @@ return new class extends Migration
             
             $table->bigInteger('profile_id');
             $table->text('shop_name');
-            $table->unsignedBigInteger('tel')->nullable();
+            //$table->unsignedBigInteger('tel')->nullable();
+            $table->string('tel')->nullable();
             $table->string('address');
             $table->text('url')->nullable();
             

@@ -105,9 +105,14 @@ class NewsController extends Controller
         //return view('user.news.item.create',['shops' => $shops,'search_shop' => $search_shop]);
     //}
    
-    public  function itemadd(){   
-         $shops = Shop::where('profile_id',auth()->id())->get();
-         return view('user.news.item.create',['shops' => $shops]);
+    public  function itemadd(Request $request){   
+       //  selectboxで選択する場合は下記のようにユーザ―が作ったshop(profile_idが一致するshop)を全て取り出しshopsとして送る
+       //  $shops = Shop::where('profile_id',auth()->id())->get();
+       //  return view('user.news.item.create',['shops' => $shops]);
+       
+         //ユーザーの作ったahopから特定のshopのみを取り出す場合
+         $shop = Shop::find($request->shop_id);
+         return view('user.news.item.create',['shop' => $shop]);
     }
     
     public function itemcreate(Request $request){
